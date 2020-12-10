@@ -1,6 +1,6 @@
 const CompanyModel =require('../models/company') //estamos requiriendo el modelo
 /**
- * Metodo para registrar una nueva empresa
+ * Metodo para registrar una nueva company
 */
 exports.create = (req, res) => {
     //validamos que todos los datos del formulario esten llenos 
@@ -11,7 +11,7 @@ exports.create = (req, res) => {
 
       })
     }
-//vamos a crear una nueva empresa
+//vamos a crear una nueva company
     const company = new CompanyModel({
         nameCompany: req.body.nameCompany,
         nitCompany:  req.body.nitCompany,
@@ -33,7 +33,7 @@ exports.create = (req, res) => {
 }
 
 /**
- * Metodo para modificar una empresa
+ * Metodo para modificar una company
 */
  exports.update=(req,res)=>{
      //validacion de que todos los campos que se van a actualizar esten llenos 
@@ -68,7 +68,7 @@ exports.create = (req, res) => {
 }
 
 /**
- * metodo para listar todas las empresas que estan en la plataforma
+ * metodo para listar todas las companys que estan en la plataforma
  */
 exports.getAll=(req,res)=>{
     CompanyModel.find()//find criterio de busqueda cuando queremos algo en especifico
@@ -84,7 +84,7 @@ exports.getAll=(req,res)=>{
 }
 
 /**
- * Metodo para obtener una empresa por el id 
+ * Metodo para obtener una company por el id 
 */
 exports.getOne=(req,res)=>{
     CompanyModel.findById(req.params.id)//findById Busque por el id
@@ -100,7 +100,7 @@ exports.getOne=(req,res)=>{
 }
 
 /**
- * Metodo para eliminar una empresa
+ * Metodo para eliminar una company
 */
 exports.deleteOne=(req,res)=>{
     CompanyModel.findByIdAndRemove(req.params.id)

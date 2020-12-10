@@ -12,7 +12,7 @@ exports.create = (req, res) => {
     const postulation = new PostulationModel({
         titlePostulation: req.body.titlePostulation,
         description:  req.body.description,
-        cargo:  req.body. cargo,
+        position:  req.body. position,
         salary: req.body.salary,
         languaje:req.body.languaje
     })
@@ -30,7 +30,7 @@ exports.create = (req, res) => {
 }
 
 /**
- * Metodo para actualizar una empresa
+ * Metodo para actualizar una company
  */
 
  exports.update=(req,res)=>{
@@ -45,7 +45,7 @@ exports.create = (req, res) => {
     const postulation= {
         titlePostulation: req.body.titlePostulation,
         description:  req.body.description,
-        cargo:  req.body. cargo,
+        position:  req.body. position,
         salary: req.body.salary,
         languaje:req.body.languaje
  }

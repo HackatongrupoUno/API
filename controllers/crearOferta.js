@@ -19,7 +19,7 @@ exports.create = (req, res) => {
     const crearOferta = new CrarOfertaModel({
         title: req.body.title,
         description: req.body.description,
-        cargo: req.body.cargo,
+        position: req.body.position,
         salary: req.body.salary,
         ubicacion: req.body.ubicacion,
         termTime: req.body.termTime 
@@ -50,7 +50,7 @@ exports.update = (req, res) => {
     const crearOferta = {
         title: req.body.title,
         description: req.body.description,
-        cargo: req.body.cargo,
+        position: req.body.position,
         salary: req.body.salary,
         ubicacion: req.body.ubicacion,
         termTime: req.body.termTime 

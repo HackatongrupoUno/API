@@ -27,7 +27,7 @@ exports.create = (req, res) => {
 }
 
 /**
- * Metodo para actualizar una empresa
+ * Metodo para actualizar una company
  */
 
  exports.update=(req,res)=>{
