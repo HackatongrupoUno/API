@@ -1,60 +1,40 @@
 const UserModel = require('../models/user');
-/**
- * Metodo para almacenal un nuevo usuario 
- * @param {*} req => todo lo que enviamos desde el dody (formulario)
- * @param {*} res => la respuesta que se devolvera 
- */
 exports.create = (req, res) => {
-    /**
-     * El sisgno de admiracion (!) antede de la condicion  significa que estamos negando la condicion
-     */
+    if (Object.entries(req.body).length == 0) {  
 
-    if (Object.entries(req.body).length == 0) {
-        // console.log('esta llegando')
         return res.status(400).send({
             message: 'Los datos son obligatorios.'
         })
     }
-
     const user = new UserModel({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
         password: req.body.password,
         phone: req.body.phone 
-
     })
-
     user.save().then((dataUser) => {
         res.send(dataUser)
     }).catch((error) => {
         res.status(500).send({
             message: error.message
-
         })
     })
 }
-/**
- * Metodo para actualizar el usuario 
- * @param {*} req =>todo lo que enviamos desde el dody (formulario)
- * @param {*} res =>la respuesta que se devolvera
- */
 exports.update = (req, res) => {
     if (Object.entries(req.body).length == 0) {
+
         return res.status(400).send({
             message: 'Los datos son obligatorios.'
         })
     }
-
     const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         password: req.body.password,
         email: req.body.email,
         phone: req.body.phone
-
-    }
-    
+    }    
     UserModel.findByIdAndUpdate(req.params.id, user)
         .then(
             (userUpdate) => {
@@ -68,7 +48,6 @@ exports.update = (req, res) => {
             }
         )
 }
-
 exports.getAll = (req, res) => {
     UserModel.find()
         .then((users) => {
@@ -79,12 +58,9 @@ exports.getAll = (req, res) => {
                 message: error.message
             })
         })
-
 }
-exports.getOne = (req, res) => {
-    // console.log('aqui ta')
-    UserModel.findById(req.params.id)
-       
+exports.getOne = (req, res) => {    
+    UserModel.findById(req.params.id)       
         .then((user) => {
             res.send(user)
         })
@@ -105,7 +81,6 @@ exports.deleteOne=(req,res)=>{
         })
     })
     }
-
 exports.login= (req, res) =>{
     UserModel.findOne({email:req.body.email},(error, dataUser)=>{
         if (dataUser != null) {
@@ -115,8 +90,7 @@ exports.login= (req, res) =>{
                 res.status(400).send({
                     message: 'Los datos no coinciden'
                 })
-            }
-            
+            }            
         }else{
             res.status(400).send({
                 message: 'Los datos no coinciden'
