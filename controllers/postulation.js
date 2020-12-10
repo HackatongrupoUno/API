@@ -9,7 +9,7 @@ exports.create = (req, res) => {
     const postulation = new PostulationModel({
         titlePostulation: req.body.titlePostulation,
         description:  req.body.description,
-        position:  req.body.position,
+        position:  req.body. position,
         salary: req.body.salary,
         language:req.body.language
     })
@@ -23,16 +23,15 @@ exports.create = (req, res) => {
 }
  exports.update=(req,res)=>{
        if (Object.entries(req.body).length == 0) {
+
         return res.status(400).send({
             message: 'los datos son obligatorios'
-
         })
     }
-
     const postulation= {
         titlePostulation: req.body.titlePostulation,
         description:  req.body.description,
-        position:  req.body.position,
+        position:  req.body. position,
         salary: req.body.salary,
         language:req.body.language
  }

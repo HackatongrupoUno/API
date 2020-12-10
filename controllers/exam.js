@@ -1,20 +1,20 @@
 const exam = require('../models/exam')
 const ExamModel = require('../models/exam')
-
 exports.create = (req, res) => {
     if (Object.entries(req.body).length == 0) {
+
         return res.status(400).send({
             message: 'Los datos son obligatorios'
         })
     }
     const exam = new ExamModel({
-        tituloExamen: req.body.tituloExamen,
-        descripcionExamen: req.body.descripcionExamen,
-        lenguajeExamen: req.body.lenguajeExamen,
-        linkExamen: req.body.linkExamen,
-        cargo: req.body.cargo,
-        salario: req.body.salario,
-        empresa: req.body.empresa
+        examtitle: req.body.examtitle,
+        examinationdescription: req.body.examinationdescription,
+        examlanguage: req.body.lenguajeExamen,
+        examLink: req.body.examLink,
+        position: req.body.position,
+        salary: req.body.salary,
+        company: req.body.company
     })
     exam.save()
         .then((dataExam) => { res.send(dataExam) })
@@ -24,25 +24,23 @@ exports.create = (req, res) => {
             })
         })
 }
-
 exports.update = (req, res) => {
     if (Object.entries(req.body).length == 0) {
+
         return res.status(400).send({
             message: 'Los datos son obligatorios.'
         })
 
-    }
-    
+    }   
     const exam = {
-        tituloExamen: req.body.tituloExamen,
-        descripcionExamen: req.body.descripcionExamen,
+        examtitle: req.body.examtitle,
+        examinationdescription: req.body.examinationdescription,
         lenguajeExamen: req.body.lenguajeExamen,
-        linkExamen: req.body.linkExamen,
-        cargo: req.body.cargo,
-        salario: req.body.salario,
-        empresa: req.body.empresa
+        examLink: req.body.examLink,
+        position: req.body.position,
+        salary: req.body.salary,
+        company: req.body.company
     }
-    
     ExamModel.findByIdAndUpdate(req.params.id, exam, { new: true })
         .then(
             (examUpdate) => {
@@ -56,7 +54,6 @@ exports.update = (req, res) => {
             }
         )    
 }
-
 exports.getAll =(req, res) => {
     ExamModel.find()
     .populate('companies')
@@ -95,4 +92,3 @@ exports.deleteOne= (req,res) => {
     )
 }
 
-// 

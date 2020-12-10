@@ -1,4 +1,4 @@
-const CompanyModel =require('../models/company')
+const CompanyModel =require('../models/company') //estamos requiriendo el modelo
 exports.create = (req, res) => {
     if (Object.entries(req.body).length == 0) {
 
@@ -6,6 +6,7 @@ exports.create = (req, res) => {
           message: 'Los datos son obligatorios'
       })
     }
+
     const company = new CompanyModel({
         nameCompany: req.body.nameCompany,
         nitCompany:  req.body.nitCompany,
