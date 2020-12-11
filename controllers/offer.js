@@ -35,16 +35,12 @@ exports.update = (req, res) => {
         address: req.body.address,
         endTime: req.body.endTime 
     }
-    OfferModel.findByIdAndUpdate(req.params.id, createoffer)
-        .then(
-            (offerUpdate) => {
+   offerModel = await OfferModel.findByIdAndUpdate(req.params.id, createoffer)  
+   try{      
                 res.send(offerUpdate)
-            }
-        ).catch(
-            (error) => {
+            }catch (error)  {
                 res.status(500).send({
                     message: error.message
                 })
-            }
-        )
+            }       
 }

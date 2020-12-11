@@ -1,9 +1,8 @@
 const mongoose = require('mongoose')
 const postulationSchema = new mongoose.Schema({
-    titlePostulation: { type: String, required: true },
-    description:  { type: String, required: true },
-    position: { type: String, required: true},
-    salary: { type: Number, required: true },
-    language:{ type: String, required: true }
+    nameRequest: { type: String},    
+    dateRequest: { type: Date, required: true},
+    statusNotification: { type: Boolean, required: true },
+    messageNotification:{ type: String, required: true }
 })
 module.exports = mongoose.model('Postulation', postulationSchema)
