@@ -16,7 +16,7 @@ const PostulationModel =require('../models/postulation')
     postulation.save()
         .then((dataPostulation) => { res.send(dataPostulation) })
         .catch((error) => {
-            res.status(500) - send({
+            res.status(500).send({
                 message: error.message
             })
         })
@@ -47,7 +47,6 @@ const PostulationModel =require('../models/postulation')
                 })
             }
         )
-
 }
 exports.getOne = (req, res) => {    
     UserModel.findById(req.params.id)       
@@ -60,7 +59,6 @@ exports.getOne = (req, res) => {
             })
         })
 }
-
 exports.getAll = (req, res) => {
     UserModel.find()
         .then((users) => {
@@ -71,5 +69,4 @@ exports.getAll = (req, res) => {
                 message: error.message
             })
         })
-
 }
