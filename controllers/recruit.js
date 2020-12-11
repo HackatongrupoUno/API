@@ -6,19 +6,16 @@ exports.create = (req, res) => {
             message: 'Los datos son obligatorios.'
         })
     }
-
     const recruit = new RecruitModel({
         notify: req.body.notify,
         applicantstatus: req.body.applicantstatus,
         applicantprocess: req.body.applicantprocess
     })
-
     recruit.save().then((dataRecruit) => {
         res.send(dataRecruit)
     }).catch((error) => {
         res.status(500).send({
             message: error.message
-
         })
     })
 }
@@ -29,13 +26,11 @@ exports.update = (req, res) => {
             message: 'Los datos son obligatorios.'
         })
     }
-
     const recruit = {
         notify: req.body.notify,
         applicantstatus: req.body.applicantstatus,
         applicantprocess: req.body.applicantprocess
     }
-    
     RecruitModel.findByIdAndUpdate(req.params.id, recruit)
         .then(
             (recruitUpdate) => {
