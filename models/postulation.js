@@ -1,4 +1,13 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const notificationSchema = new mongoose.Schema({
+    statusNotification: {type: Boolean, required: true},
+    messageNotification: {type: String, required: true}, 
+})
+module.exports= mongoose.model('notification', notificationSchema)
+
+
+
+/* const mongoose = require('mongoose')
 const postulationSchema = new mongoose.Schema({
     nameRequest: { type: String, required: true },
     idRequest:  { type: String, required: true },
@@ -6,4 +15,4 @@ const postulationSchema = new mongoose.Schema({
     statusNotification: { type: Boolean, required: true },
     messageNotification:{ type: String, required: true }
 })
-module.exports = mongoose.model('Postulation', postulationSchema)
+module.exports = mongoose.model('Postulation', postulationSchema) */
