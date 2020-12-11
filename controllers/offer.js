@@ -54,4 +54,5 @@ exports.getAll=(req,res)=>{
             })
         }
     )
+
 }
