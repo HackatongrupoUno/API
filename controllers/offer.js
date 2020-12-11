@@ -21,8 +21,7 @@ exports.create = (req, res) => {
         })
     })
 }
-exports.update  = async(req, res) => {
-   try {
+exports.update = (req, res) => {
     if (Object.entries(req.body).length == 0) {
 
         return res.status(400).send({
@@ -36,23 +35,12 @@ exports.update  = async(req, res) => {
         address: req.body.address,
         endTime: req.body.endTime 
     }
-    offerUpdate = await OfferModel.findByIdAndUpdate(req.params.id, createoffer) 
-        res.send(offerUpdate)
-   } catch (error) {
-    res.status(500).send({
-        message: error.message
-   })
-   }
-} 
-exports.getAll=(req,res)=>{
-    OfferModel.find() 
-    .then((createoffer)=>{res.send(createoffer)})
-    .catch(
-        (error)=>{
-            res.status(500).send({
-                message:error.message
-            })
-        }
-    )
-
+   offerModel = await OfferModel.findByIdAndUpdate(req.params.id, createoffer)  
+   try{      
+                res.send(offerUpdate)
+            }catch (error)  {
+                res.status(500).send({
+                    message: error.message
+                })
+            }       
 }
