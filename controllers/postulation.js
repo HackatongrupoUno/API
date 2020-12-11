@@ -47,6 +47,7 @@ const PostulationModel =require('../models/postulation')
                 })
             }
         )
+
 }
 exports.getOne = (req, res) => {    
     UserModel.findById(req.params.id)       
@@ -70,4 +71,5 @@ exports.getAll = (req, res) => {
                 message: error.message
             })
         })
+
 }
