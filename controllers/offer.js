@@ -9,7 +9,6 @@ exports.create = (req, res) => {
     const createoffer = new OfferModel({
         title: req.body.title,
         description: req.body.description,
-        role: req.body.role,
         salary: req.body.salary,
         address: req.body.address,
         endTime: req.body.endTime 
@@ -32,7 +31,6 @@ exports.update = (req, res) => {
     const createoffer = {
         title: req.body.title,
         description: req.body.description,
-        role: req.body.role,
         salary: req.body.salary,
         address: req.body.address,
         endTime: req.body.endTime 
