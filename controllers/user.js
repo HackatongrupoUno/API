@@ -1,5 +1,5 @@
 const UserModel = require('../models/user');
-exports.create = (req, res) => {
+exports.create = async(req, res) => {
     try {
     if (Object.entries(req.body).length == 0) {
 
@@ -14,7 +14,7 @@ exports.create = (req, res) => {
         password: req.body.password,
         phone: req.body.phone
     })
-    users = await user.save()
+    const dataUser = await user.save()
         res.send(dataUser)
     } catch (error)  {
         res.status(500).send({
@@ -22,7 +22,7 @@ exports.create = (req, res) => {
         })
     }
 }
-exports.update = (req, res) => {
+exports.update = async(req, res) => {
     try {
         if (Object.entries(req.body).length == 0) {
 
@@ -37,7 +37,7 @@ exports.update = (req, res) => {
             email: req.body.email,
             phone: req.body.phone
         }
-        userModel = await UserModel.findByIdAndUpdate(req.params.id, user)
+        const userUpdate = await UserModel.findByIdAndUpdate(req.params.id, user)
         res.send(userUpdate)
     } catch (error) {
         res.status(500).send({
@@ -45,9 +45,9 @@ exports.update = (req, res) => {
         })
     }
 }
-exports.getAll = (req, res) => {
+exports.getAll = async(req, res) => {
     try {
-    userModel = await UserModel.find()
+        const users = await UserModel.find()
         res.send(users)
         } catch (error)  {
             res.status(500).send({
@@ -55,9 +55,9 @@ exports.getAll = (req, res) => {
             })
         }
 }
-exports.getOne = (req, res) => {
+exports.getOne = async(req, res) => {
     try {
-        userModel = await UserModel.findById(req.params.id)
+        const user = await UserModel.findById(req.params.id)
         res.send(user)
         } catch (error)  {
             res.status(500).send({
@@ -65,9 +65,9 @@ exports.getOne = (req, res) => {
             })
         }
 }
-exports.deleteOne = (req, res) => {
+exports.deleteOne = async(req, res) => {
     try {
-        userModel = await UserModel.findByIdAndRemove(req.params.id)
+        const userdelete = await UserModel.findByIdAndRemove(req.params.id)
         res.send(userdelete)
         } catch (error)  {
             res.status(500).send({
