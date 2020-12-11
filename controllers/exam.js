@@ -10,7 +10,7 @@ exports.create = (req, res) => {
     const exam = new ExamModel({
         examtitle: req.body.examtitle,
         examinationdescription: req.body.examinationdescription,
-        examlanguage: req.body.lenguajeExamen,
+        examlanguage: req.body.examlanguage,
         examLink: req.body.examLink,
         position: req.body.position,
         salary: req.body.salary,
@@ -35,7 +35,7 @@ exports.update = (req, res) => {
     const exam = {
         examtitle: req.body.examtitle,
         examinationdescription: req.body.examinationdescription,
-        lenguajeExamen: req.body.lenguajeExamen,
+        examlanguage: req.body.examlanguage,
         examLink: req.body.examLink,
         position: req.body.position,
         salary: req.body.salary,
