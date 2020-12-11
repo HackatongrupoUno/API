@@ -1,56 +1,52 @@
-const CompanyModel =require('../models/company') //estamos requiriendo el modelo
+const OfferModel = require('../models/offer');
 exports.create = (req, res) => {
     if (Object.entries(req.body).length == 0) {
-
-       return res.status(400).send({
-          message: 'Los datos son obligatorios'
-      })
-    }
-    const company = new CompanyModel({
-        nameCompany: req.body.nameCompany,
-        nitCompany:  req.body.nitCompany,
-        phoneCompany:  req.body.phoneCompany,
-        email: req.body.email,
-        password:req.body.password
-    })
-    company.save()
-        .then((dataCompany) => { res.send(dataCompany) })
-        .catch((error) => {
-            res.status(500).send({
-                message: error.message
-            })
+        
+        return res.status(400).send({
+            message: 'Los datos son obligatorios.'
         })
+    }
+    const createoffer = new OfferModel({
+        title: req.body.title,
+        description: req.body.description,
+        salary: req.body.salary,
+        address: req.body.address,
+        endTime: req.body.endTime 
+    })
+    createoffer.save().then((dataoffer) => {
+        res.send(dataoffer)
+    }).catch((error) => {
+        res.status(500).send({
+            message: error.message
+        })
+    })
 }
- exports.update=(req,res)=>{
+exports.update  = async(req, res) => {
+   try {
     if (Object.entries(req.body).length == 0) {
 
         return res.status(400).send({
-            message: 'Los datos son obligatorios'
+            message: 'Los datos son obligatorios.'
         })
     }
-    const company = {
-        nameCompany: req.body.nameCompany,
-        nitCompany:  req.body.nitCompany,
-        phoneCompany:  req.body.phoneCompany,
-        email: req.body.email,
-        password:req.body.password
- }
- CompanyModel.findByIdAndUpdate(req.params.id, company)
-        .then(
-            (companyUpdate) => {
-                res.send(companyUpdate)
-            }
-        ).catch(
-            (error) => {
-                res.status(500).send({
-                    message: error.message
-                })
-            }
-        )
-}
+    const createoffer = {
+        title: req.body.title,
+        description: req.body.description,
+        salary: req.body.salary,
+        address: req.body.address,
+        endTime: req.body.endTime 
+    }
+    offerUpdate = await OfferModel.findByIdAndUpdate(req.params.id, createoffer) 
+        res.send(offerUpdate)
+   } catch (error) {
+    res.status(500).send({
+        message: error.message
+   })
+   }
+} 
 exports.getAll=(req,res)=>{
-    CompanyModel.find() 
-    .then((company)=>{res.send(company)})
+    OfferModel.find() 
+    .then((createoffer)=>{res.send(createoffer)})
     .catch(
         (error)=>{
             res.status(500).send({
@@ -58,26 +54,5 @@ exports.getAll=(req,res)=>{
             })
         }
     )
-}
-exports.getOne=(req,res)=>{
-    CompanyModel.findById(req.params.id)
-    .then((company)=>{res.send(company)})
-    .catch(
-        (error)=>{
-            res.status(500).send({
-                message:error.message
-            })
-        }
-    )
-}
-exports.deleteOne=(req,res)=>{
-    CompanyModel.findByIdAndRemove(req.params.id)
-    .then((company)=>{res.send(company)})
-    .catch(
-        (error)=>{
-        res.status(500).send({
-            message:error.message
-        })
-    }
-    )
+
 }
